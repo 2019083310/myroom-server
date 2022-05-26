@@ -1,0 +1,67 @@
+[
+  {
+    "id": "panel",
+    "type": "panel",
+    "width": "400px",
+    "height": "100vh",
+    "backgroundColor": "white"
+  },
+  {
+    "id": "text-1",
+    "top": "100px",
+    "data": "我是一号文字",
+    "left": "100px",
+    "size": "12px",
+    "type": "text",
+    "color": "#FF0000",
+    "width": "100px",
+    "height": "20px"
+  },
+  {
+    "id": "image-1",
+    "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+    "top": "100px",
+    "left": "100px",
+    "type": "image",
+    "width": "100px",
+    "height": "100px"
+  },
+  {
+    "id": "audio-1",
+    "src": "http://localhost:3000/user/audio/76899eb0101326f2c0f1486d81047188",
+    "top": "100px",
+    "left": "100px",
+    "type": "audio",
+    "width": "100px",
+    "height": "100px"
+  },
+  {
+    "id": "video-1",
+    "src": "http://localhost:3000/user/video/d2dcea009d43a2dbaa713b99d3b7dc68",
+    "top": "100px",
+    "left": "100px",
+    "type": "video",
+    "width": "100px",
+    "height": "100px"
+  },
+  {
+    "id": "card-1",
+    "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+    "top": "100px",
+    "left": "100px",
+    "name": "山水之家",
+    "type": "card",
+    "width": "100%",
+    "guapai": "2022-02-13",
+    "height": "100px",
+    "mianji": "99",
+    "soujia": "980万",
+    "louxing": "",
+    "niandai": "2022",
+    "fangxing": "三室两厅",
+    "chaoxiang": "南北",
+    "width_img": "100%",
+    "zhuangxiu": "精装修",
+    "height_img": "200px"
+  }
+]
