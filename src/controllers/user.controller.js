@@ -192,6 +192,7 @@ class UserController {
     const fileInfo = await fileModel.getVideoByName(filename)
 
     ctx.response.set('content-type', fileInfo[0].mimetype)
+
     ctx.body = fs.createReadStream(`${VIDEO_URL}/${filename}`)
   }
 

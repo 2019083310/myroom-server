@@ -8,15 +8,6 @@ const {
   saveAudioInfo
 } = require('../controllers/file.controller')
 
-// 头像上传处理函数
-const {
-  avatarAgentHandler,
-  avatarUserHandler,
-  pictureHandler,
-  videoHandler,
-  audioHandler
-} = require('../middleware/file.middleware')
-
 const {
   verifyToken
 } = require('../middleware/verifyLogin')
@@ -26,16 +17,16 @@ const fileRouter = new Router({
 })
 
 // 上传头像接口
-fileRouter.post('/user/avatar', verifyToken, avatarUserHandler, saveUserAvatar)
-fileRouter.post('/agent/avatar', verifyToken, avatarAgentHandler, saveAgentAvatar)
+fileRouter.post('/user/avatar', verifyToken, saveUserAvatar)
+fileRouter.post('/agent/avatar', verifyToken, saveAgentAvatar)
 
 // 上传房源图片的接口
-fileRouter.post('/picture', verifyToken, pictureHandler, saveHousePicture)
+fileRouter.post('/picture', verifyToken, saveHousePicture)
 
 // 经纪人上传视频接口
-fileRouter.post('/video', verifyToken, videoHandler, saveVideoInfo)
+fileRouter.post('/video', verifyToken, saveVideoInfo)
 
 // 经纪人上传音频接口
-fileRouter.post('/audio', verifyToken, audioHandler, saveAudioInfo)
+fileRouter.post('/audio', verifyToken, saveAudioInfo)
 
 module.exports = fileRouter

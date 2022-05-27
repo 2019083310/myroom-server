@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const cors = require('@koa/cors')
+const koaBody = require('koa-body')
 
 // 处理body参数中间件
 const bodyParser = require('koa-bodyparser')
@@ -11,6 +12,13 @@ const errorHandle = require('./errorhandle')
 const app = new Koa()
 app.useRoutes = useRoutes
 app.use(cors())
+
+app.use(koaBody({
+  multipart: true,
+  formidable: {
+    maxFileSize: 1024 * 1024 * 200
+  }
+}))
 
 app.use(bodyParser())
 // 路由中间件
