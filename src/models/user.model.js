@@ -100,6 +100,14 @@ class UserModel {
 
     return result[0]
   }
+
+  // 获取房源详情信息
+  async getHouseInfo(houseId) {
+    const statement = 'SELECT * FROM agent_house WHERE id = ?;'
+    const result = await connection.execute(statement, [houseId])
+
+    return result[0]
+  }
 }
 
 module.exports = new UserModel()

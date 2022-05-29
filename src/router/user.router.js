@@ -11,7 +11,8 @@ const {
   getApartmentList,
   getPictureInfo,
   getVideoInfo,
-  getAudioInfo
+  getAudioInfo,
+  getHouseInfo
 } = require('../controllers/user.controller')
 
 // 路由中间件，工具函数
@@ -54,6 +55,9 @@ userRouter.get('/video/:filename', getVideoInfo)
 
 // 用户获取视频
 userRouter.get('/audio/:filename', getAudioInfo)
+
+// 用户根据房源卡片id，获取房源详情信息
+userRouter.get('/house/:houseId',getHouseInfo)
 
 // 退出登录接口
 userRouter.post('/logout', verifyToken, logout)

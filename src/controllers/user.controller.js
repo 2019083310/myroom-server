@@ -206,6 +206,19 @@ class UserController {
     ctx.body = fs.createReadStream(`${AUDIO_URL}/${filename}`)
   }
 
+  // ?根据房源卡片id，获取房源详情数据
+  async getHouseInfo(ctx, next) {
+    const houseId = ctx.params.houseId
+
+    const result = await userModel.getHouseInfo(houseId)
+
+    ctx.body = {
+      ret: true,
+      message: '获取信息成功~',
+      data: result[0]
+    }
+  }
+
   // ?退出登录
   async logout(ctx, next) {
     const userId = ctx.user.id

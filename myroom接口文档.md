@@ -184,128 +184,314 @@ status也会有相应的返回
   }
   ```
 
-### 获取房源列表中的图片信息
+### 获取所有的项目
 
-- 请求路径：/user/images/:filename
+- 请求路径：/agent/project/list
+
+- 请求方法：get
+
+- 请求参数：
+
+  | 参数名              | 参数说明     | 备注 |
+  | ------------------- | ------------ | ---- |
+  | headers中的认证字段 | Bearer Token |      |
+
+- 响应参数：具体看如下json数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "获取成功~",
+      "data": [
+          {
+              "id": 4,//projectId  后续编辑要保存起来
+              "name": null,
+              "author": null,
+              "createAt": "2022-05-26T09:08:46.000Z"//创建时间
+          },
+          {
+              "id": 6,
+              "name": null,
+              "author": null,
+              "createAt": "2022-05-26T10:17:57.000Z"
+          },
+          {
+              "id": 7,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T10:35:29.000Z"
+          },
+          {
+              "id": 8,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T11:50:33.000Z"
+          },
+          {
+              "id": 9,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T11:51:29.000Z"
+          },
+          {
+              "id": 12,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T13:26:11.000Z"
+          },
+          {
+              "id": 13,
+              "name": "山水",
+              "author": "kobe",
+              "createAt": "2022-05-26T14:58:35.000Z"
+          },
+          {
+              "id": 14,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-27T09:41:33.000Z"
+          },
+          {
+              "id": 15,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-27T10:01:36.000Z"
+          },
+          {
+              "id": 16,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-27T10:13:07.000Z"
+          }
+      ]
+  }
+  ```
+
+### 获取某个项目的面板数据
+
+- 请求路径：/agent/active/:projectId
+
+- 请求方法：get
+
+- 请求参数：
+
+  | 参数名              | 参数说明       | 备注     |
+  | ------------------- | -------------- | -------- |
+  | headers中的认证字段 | Bearer Token   |          |
+  | projectId           | params中的字段 | 不能为空 |
+
+- 响应参数：具体看如下json数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "获取成功~",
+      "name": "我是项目",
+      "author": "futhor",
+      "data": [
+          {
+              "id": "panel",
+              "type": "panel",
+              "width": "400px",
+              "height": "100vh",
+              "backgroundColor": "white"
+          },
+          {
+              "id": "text-1",
+              "type": "text",
+              "data": "我是一号文字",
+              "color": "#FF0000",
+              "size": "12px",
+              "width": "100px",
+              "height": "20px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "text-2",
+              "type": "text",
+              "data": "我是二号文字",
+              "color": "#FF0000",
+              "size": "12px",
+              "width": "100px",
+              "height": "20px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "image-1",
+              "type": "image",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "image-2",
+              "type": "image",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "video-1",
+              "type": "video",
+              "src": "http://localhost:3000/user/video/d2dcea009d43a2dbaa713b99d3b7dc68",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "video-2",
+              "type": "video",
+              "src": "http://localhost:3000/user/video/d2dcea009d43a2dbaa713b99d3b7dc68",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "audio-1",
+              "type": "audio",
+              "src": "http://localhost:3000/user/audio/76899eb0101326f2c0f1486d81047188",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "audio-2",
+              "type": "audio",
+              "src": "http://localhost:3000/user/audio/76899eb0101326f2c0f1486d81047188",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "card-1",
+              "type": "card",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width_img": "100%",
+              "height_img": "200px",
+              "width": "100%",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px",
+              "name": "山水之家",
+              "soujia": "980万",
+              "guapai": "2022-02-13",
+              "fangxing": "三室两厅",
+              "zhuangxiu": "精装修",
+              "mianji": "99",
+              "louxing": "",
+              "chaoxiang": "南北",
+              "niandai": "2022"
+          },
+          {
+              "id": "card-2",
+              "type": "card",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width_img": "100%",
+              "height_img": "200px",
+              "width": "100%",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px",
+              "name": "山水之家",
+              "soujia": "980万",
+              "guapai": "2022-02-13",
+              "fangxing": "三室两厅",
+              "zhuangxiu": "精装修",
+              "mianji": "99",
+              "louxing": "",
+              "chaoxiang": "南北",
+              "niandai": "2022"
+          }
+      ]
+  
+  ```
+
+### 获取房源详情信息
+
+- 请求路径：/user/house/:houseId
 - 请求方法：get
 - 请求参数
 
-| 参数名   | 参数说明                                           | 备注                |
-| -------- | -------------------------------------------------- | ------------------- |
-| filename | filename是params中的字段                           |                     |
-| type     | small 320px\| middle 640px\|large1280px  为空 原图 | type为query中的字段 |
+| 参数名  | 参数说明                | 备注 |
+| ------- | ----------------------- | ---- |
+| houseId | houseId是params中的字段 | 必填 |
 
-- 响应参数---就是图片
+- 响应参数:具体如下所示
 
 - 响应数据
 
   ```json
-  图片
+  {
+      "ret": true,
+      "message": "获取信息成功~",
+      "data": {
+          "id": 103612,
+          "listing_name": "鑫苑小区 2室 2厅 86平米",
+          "first_upload_at": "2018-11-05T02:45:24.000Z",
+          "pricing": 51000000,
+          "squaremeter": 8600,
+          "downpayment": null,
+          "floor": null,
+          "total_floor": 5,
+          "dict_house_id": 6662689540056023000,
+          "room_structure": null,
+          "ladder_ration": null,
+          "heating_type": null,
+          "house_duration": null,
+          "property_right": null,
+          "mortgage": null,
+          "usage_area": 0,
+          "floor_level": 1,
+          "facing_type": 9,
+          "decoration_type": null,
+          "building_type": null,
+          "built_year": "2004",
+          "city_name": "德州",
+          "city_code": "B189",
+          "neighborhood_name": "鑫苑小区",
+          "neighborhood_source_code": "9_B189_685",
+          "floor_plan_room": 2,
+          "floor_plan_hall": 2,
+          "floor_plan_bath": 1,
+          "floor_plan_kitchen": 1,
+          "house_type": 2,
+          "layout_type": 0,
+          "last_publish_time": "2021-07-23T06:59:21.000Z",
+          "ownership": null,
+          "right_property": "",
+          "property_management_type": 1,
+          "elevator": null,
+          "house_status": 0,
+          "online_house_status": 0,
+          "created_at": "2019-02-25T08:12:49.000Z",
+          "updated_at": "2021-11-10T10:19:21.000Z",
+          "data_source_id": 9,
+          "offline_code": "8704",
+          "source_code": "9_B189_8704",
+          "start_version": 0,
+          "last_version": 2000000000,
+          "crawl_id": 15098851641500213000,
+          "task_id": 0,
+          "house_card": "",
+          "online_neighborhood_id": 6584044710015271000,
+          "online_city_id": 12920,
+          "online_district_id": 12921,
+          "online_area_id": 21669,
+          "property_only": null,
+          "property_certificate_period": null
+      }
+  }
   ```
-
-### 获取房源列表信息----具体的看相应数据有说明
-
-- 请求路径：/user/apartment
-- 请求方法：get
-- 请求参数
-
-| 参数名                       | 参数说明         | 备注     |
-| ---------------------------- | ---------------- | -------- |
-| name                         | 用户名           | 不能为空 |
-| password                     | 密码             | 不能为空 |
-| headers中的authorization字段 | 携带Bearer token | 不能为空 |
-
-- 响应参数
-
-| 参数名  | 参数说明               | 备注     |
-| ------- | ---------------------- | -------- |
-| data    | 具体的每一项列表的数据 |          |
-| ret     | true                   | 登陆成功 |
-| message | 恭喜你登录成功         |          |
-
-- 响应数据
-
-```json
-{
-    "ret": true,
-    "data": [
-        {
-            "id": 1,//房源列表id
-            "name": "远洋山水",
-            "price": 190,//价格
-            "unitPrice": 17592,//单价
-            "area": 108.99,//面积
-            "apartment": "三室两厅",//房源户型
-            "type": "普通住宅",//类型
-            "years": 2019,//年份
-            "renovation": "精装修",//装修
-            "listing": "2020-12-23T00:00:00.000Z",//挂牌时间
-            "elevator": 1,//有无电梯  1有 0没有
-            "orientation": "南北",//朝向
-            "introduction": "我是小区，我是小区，我是小区",//小区介绍
-            "agentInfo": {//经纪人信息
-                "agentId": 5,//id
-                "agentName": "delai",//真实名称
-                "agentPhone": 19931077931,//电话
-                "agentAvatar": "http://180.184.74.25:80:80/agent/5/avatar"//头像
-            },
-            "images": [//房源介绍图片
-                "http://180.184.74.25:80/user/images/6b56fa57b3d08cd28cd524f12c99e2af",
-                "http://180.184.74.25:80/user/images/9a4b6cc00e8d83dbbc376a0cffd9196c",
-                "http://180.184.74.25:80/user/images/10e3bd51ce37bdf6b36ec0f351d6e358",
-                "http://180.184.74.25:80/user/images/dee7b2e4b981da32909cb3a3ecf45995"
-            ]
-        },
-        {
-            "id": 2,
-            "name": "远洋山水",
-            "price": 130,
-            "unitPrice": 28181,
-            "area": 88,
-            "apartment": "三室一厅",
-            "type": "普通住宅",
-            "years": 2019,
-            "renovation": "精装修",
-            "listing": "2020-12-23T00:00:00.000Z",
-            "elevator": 1,
-            "orientation": "南北",
-            "introduction": "我是小区，我是小区，我是小区",
-            "agentInfo": {
-                "agentId": 1,
-                "agentName": "",
-                "agentPhone": null,
-                "agentAvatar": ""
-            },
-            "images": [
-                "http://180.184.74.25:80/user/images/2025e4e883dd4e47d5aa4fd4a148df8e"
-            ]
-        },
-        {
-            "id": 3,
-            "name": "远洋山水",
-            "price": 120,
-            "unitPrice": 28180,
-            "area": 88,
-            "apartment": "三室一厅",
-            "type": "普通住宅",
-            "years": 2019,
-            "renovation": "精装修",
-            "listing": "2020-12-23T00:00:00.000Z",
-            "elevator": 1,
-            "orientation": "南北",
-            "introduction": "我是小区，我是小区，我是小区",
-            "agentInfo": {
-                "agentId": 1,
-                "agentName": "",
-                "agentPhone": null,
-                "agentAvatar": ""
-            },
-            "images": null
-        }
-    ],
-    "message": "获取成功~"
-}
-```
 
 ## 经纪人子系统
 
@@ -432,9 +618,97 @@ status也会有相应的返回
   }
   ```
 
+### 图片上传
+
+- 请求路径：/upload/picture
+- 请求方法：post
+- 请求参数
+
+| 参数名                       | 参数说明                     | 备注     |
+| ---------------------------- | ---------------------------- | -------- |
+| headers中的authorization字段 | Bearer token                 |          |
+| picture                      | 图片文件       form-data格式 | 不能为空 |
+
+- 响应参数
+
+- | 参数名  | 参数说明 | 备注 |
+  | ------- | -------- | ---- |
+  | ret     | 获取成功 |      |
+  | message | 信息     |      |
+  | src     | 图片地址 |      |
+
+- 响应数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "上传图片成功~",
+      "src": "http://180.184.74.25:80/user/images/d6c21cfd0c8e2a6394deb5d05"
+  }
+  ```
+
+### 音频上传
+
+- 请求路径：/upload/audio
+- 请求方法：post
+- 请求参数
+
+| 参数名                       | 参数说明                     | 备注     |
+| ---------------------------- | ---------------------------- | -------- |
+| headers中的authorization字段 | Bearer token                 |          |
+| audio                        | 音频文件       form-data格式 | 不能为空 |
+
+- 响应参数
+
+- | 参数名  | 参数说明 | 备注 |
+  | ------- | -------- | ---- |
+  | ret     | 获取成功 |      |
+  | message | 信息     |      |
+  | src     | 音频地址 |      |
+
+- 响应数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "上传音频成功~",
+      "src": "http://180.184.74.25:80/user/audio/d6c21cfd0c8e2a6394deb5d06"
+  }
+  ```
+
+### 视频上传
+
+- 请求路径：/upload/video
+- 请求方法：post
+- 请求参数
+
+| 参数名                       | 参数说明                     | 备注     |
+| ---------------------------- | ---------------------------- | -------- |
+| headers中的authorization字段 | Bearer token                 |          |
+| video                        | 视频文件       form-data格式 | 不能为空 |
+
+- 响应参数
+
+- | 参数名  | 参数说明 | 备注 |
+  | ------- | -------- | ---- |
+  | ret     | 获取成功 |      |
+  | message | 信息     |      |
+  | src     | 视频地址 |      |
+
+- 响应数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "上传视频成功~",
+      "src": "http://180.184.74.25:80/user/video/d6c21cfd0c8e2a6394deb5d05"
+  }
+  ```
+
 ### 修改个人信息
 
 - 请求路径：/agent/info
+
 - 请求方法：patch
 
 - 请求参数
@@ -504,7 +778,506 @@ status也会有相应的返回
 ]
 ```
 
-### 经纪人发布房源信息(这个是我用经纪人身份模拟的)
+### 创建项目
+
+- 请求路径：/agent/create/project
+- 请求方法：post
+- 请求参数：具体看下面的数据+token
+
+```json
+{
+    "name":"我是项目",//项目名称
+    "author":"futhor",//作者
+    "data":[//具体的面板信息
+  {
+    "id": "panel",
+    "type": "panel",
+    "width": "400px",
+    "height": "100vh",
+    "backgroundColor": "white"
+  },
+  {
+    "id": "text-1",
+    "type": "text",
+    "data": "我是一号文字",
+    "color": "#FF0000",
+    "size": "12px",
+    "width": "100px",
+    "height": "20px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "image-1",
+    "type": "image",
+    "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+    "width": "100px",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "video-1",
+    "type": "video",
+    "src": "http://localhost:3000/user/video/d2dcea009d43a2dbaa713b99d3b7dc68",
+    "width": "100px",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "audio-1",
+    "type": "audio",
+    "src": "http://localhost:3000/user/audio/76899eb0101326f2c0f1486d81047188",
+    "width": "100px",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "card-1",
+    "type": "card",
+    "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+    "width_img": "100%",
+    "height_img": "200px",
+    "width": "100%",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px",
+    "name": "山水之家",
+    "soujia": "980万",
+    "guapai": "2022-02-13",
+    "fangxing": "三室两厅",
+    "zhuangxiu": "精装修",
+    "mianji": "99",
+    "louxing": "",
+    "chaoxiang": "南北",
+    "niandai": "2022"
+  },
+  {
+    "id": "text-2",
+    "type": "text",
+    "data": "我是二号文字",
+    "color": "#FF0000",
+    "size": "12px",
+    "width": "100px",
+    "height": "20px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "image-2",
+    "type": "image",
+    "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+    "width": "100px",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "video-2",
+    "type": "video",
+    "src": "http://localhost:3000/user/video/d2dcea009d43a2dbaa713b99d3b7dc68",
+    "width": "100px",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "audio-2",
+    "type": "audio",
+    "src": "http://localhost:3000/user/audio/76899eb0101326f2c0f1486d81047188",
+    "width": "100px",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px"
+  },
+  {
+    "id": "card-2",
+    "type": "card",
+    "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+    "width_img": "100%",
+    "height_img": "200px",
+    "width": "100%",
+    "height": "100px",
+    "left": "100px",
+    "top": "100px",
+    "name": "山水之家",
+    "soujia": "980万",
+    "guapai": "2022-02-13",
+    "fangxing": "三室两厅",
+    "zhuangxiu": "精装修",
+    "mianji": "99",
+    "louxing": "",
+    "chaoxiang": "南北",
+    "niandai": "2022"
+  }
+]
+}
+```
+
+- 响应信息
+
+  ```json
+  {
+      "ret": true,
+      "message": "创建活动页成功~"
+  }
+  ```
+
+### 获取房源详情数据
+
+- 请求路径：/agent/house/:houseId
+- 请求方法：get
+- 请求参数
+
+| 参数名  | 参数说明                | 备注 |
+| ------- | ----------------------- | ---- |
+| houseId | houseId是params中的字段 | 必填 |
+
+- 响应参数:具体如下所示
+
+- 响应数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "获取信息成功~",
+      "data": {
+          "id": 103612,
+          "listing_name": "鑫苑小区 2室 2厅 86平米",
+          "first_upload_at": "2018-11-05T02:45:24.000Z",
+          "pricing": 51000000,
+          "squaremeter": 8600,
+          "downpayment": null,
+          "floor": null,
+          "total_floor": 5,
+          "dict_house_id": 6662689540056023000,
+          "room_structure": null,
+          "ladder_ration": null,
+          "heating_type": null,
+          "house_duration": null,
+          "property_right": null,
+          "mortgage": null,
+          "usage_area": 0,
+          "floor_level": 1,
+          "facing_type": 9,
+          "decoration_type": null,
+          "building_type": null,
+          "built_year": "2004",
+          "city_name": "德州",
+          "city_code": "B189",
+          "neighborhood_name": "鑫苑小区",
+          "neighborhood_source_code": "9_B189_685",
+          "floor_plan_room": 2,
+          "floor_plan_hall": 2,
+          "floor_plan_bath": 1,
+          "floor_plan_kitchen": 1,
+          "house_type": 2,
+          "layout_type": 0,
+          "last_publish_time": "2021-07-23T06:59:21.000Z",
+          "ownership": null,
+          "right_property": "",
+          "property_management_type": 1,
+          "elevator": null,
+          "house_status": 0,
+          "online_house_status": 0,
+          "created_at": "2019-02-25T08:12:49.000Z",
+          "updated_at": "2021-11-10T10:19:21.000Z",
+          "data_source_id": 9,
+          "offline_code": "8704",
+          "source_code": "9_B189_8704",
+          "start_version": 0,
+          "last_version": 2000000000,
+          "crawl_id": 15098851641500213000,
+          "task_id": 0,
+          "house_card": "",
+          "online_neighborhood_id": 6584044710015271000,
+          "online_city_id": 12920,
+          "online_district_id": 12921,
+          "online_area_id": 21669,
+          "property_only": null,
+          "property_certificate_period": null
+      }
+  }
+  ```
+
+### 获取某个项目
+
+- 请求路径：/agent/active/:projectId
+
+- 请求方法：get
+
+- 请求参数：
+
+  | 参数名              | 参数说明       | 备注     |
+  | ------------------- | -------------- | -------- |
+  | headers中的认证字段 | Bearer Token   |          |
+  | projectId           | params中的字段 | 不能为空 |
+
+- 响应参数：具体看如下json数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "获取成功~",
+      "name": "我是项目",
+      "author": "futhor",
+      "data": [
+          {
+              "id": "panel",
+              "type": "panel",
+              "width": "400px",
+              "height": "100vh",
+              "backgroundColor": "white"
+          },
+          {
+              "id": "text-1",
+              "type": "text",
+              "data": "我是一号文字",
+              "color": "#FF0000",
+              "size": "12px",
+              "width": "100px",
+              "height": "20px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "text-2",
+              "type": "text",
+              "data": "我是二号文字",
+              "color": "#FF0000",
+              "size": "12px",
+              "width": "100px",
+              "height": "20px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "image-1",
+              "type": "image",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "image-2",
+              "type": "image",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "video-1",
+              "type": "video",
+              "src": "http://localhost:3000/user/video/d2dcea009d43a2dbaa713b99d3b7dc68",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "video-2",
+              "type": "video",
+              "src": "http://localhost:3000/user/video/d2dcea009d43a2dbaa713b99d3b7dc68",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "audio-1",
+              "type": "audio",
+              "src": "http://localhost:3000/user/audio/76899eb0101326f2c0f1486d81047188",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "audio-2",
+              "type": "audio",
+              "src": "http://localhost:3000/user/audio/76899eb0101326f2c0f1486d81047188",
+              "width": "100px",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px"
+          },
+          {
+              "id": "card-1",
+              "type": "card",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width_img": "100%",
+              "height_img": "200px",
+              "width": "100%",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px",
+              "name": "山水之家",
+              "soujia": "980万",
+              "guapai": "2022-02-13",
+              "fangxing": "三室两厅",
+              "zhuangxiu": "精装修",
+              "mianji": "99",
+              "louxing": "",
+              "chaoxiang": "南北",
+              "niandai": "2022"
+          },
+          {
+              "id": "card-2",
+              "type": "card",
+              "src": "http://localhost:3000/user/images/fdf75f022f30ef623871f2d9ceb25c47",
+              "width_img": "100%",
+              "height_img": "200px",
+              "width": "100%",
+              "height": "100px",
+              "left": "100px",
+              "top": "100px",
+              "name": "山水之家",
+              "soujia": "980万",
+              "guapai": "2022-02-13",
+              "fangxing": "三室两厅",
+              "zhuangxiu": "精装修",
+              "mianji": "99",
+              "louxing": "",
+              "chaoxiang": "南北",
+              "niandai": "2022"
+          }
+      ]
+  }
+  ```
+
+### 获取所有经纪人创建的项目
+
+- 请求路径：/agent/project/list
+
+- 请求方法：get
+
+- 请求参数：
+
+  | 参数名              | 参数说明     | 备注 |
+  | ------------------- | ------------ | ---- |
+  | headers中的认证字段 | Bearer Token |      |
+
+- 响应参数：具体看如下json数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "获取成功~",
+      "data": [
+          {
+              "id": 4,//projectId  后续编辑要保存起来
+              "name": null,
+              "author": null,
+              "createAt": "2022-05-26T09:08:46.000Z"//创建时间
+          },
+          {
+              "id": 6,
+              "name": null,
+              "author": null,
+              "createAt": "2022-05-26T10:17:57.000Z"
+          },
+          {
+              "id": 7,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T10:35:29.000Z"
+          },
+          {
+              "id": 8,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T11:50:33.000Z"
+          },
+          {
+              "id": 9,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T11:51:29.000Z"
+          },
+          {
+              "id": 12,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-26T13:26:11.000Z"
+          },
+          {
+              "id": 13,
+              "name": "山水",
+              "author": "kobe",
+              "createAt": "2022-05-26T14:58:35.000Z"
+          },
+          {
+              "id": 14,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-27T09:41:33.000Z"
+          },
+          {
+              "id": 15,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-27T10:01:36.000Z"
+          },
+          {
+              "id": 16,
+              "name": "我是项目",
+              "author": "futhor",
+              "createAt": "2022-05-27T10:13:07.000Z"
+          }
+      ]
+  }
+  ```
+
+### 删除某一个项目(有权限，只能删除自己的，我做了验证)
+
+- 请求路径：/agent/:projectId/project
+
+- 请求方法：delete
+
+- 请求参数：
+
+  | 参数名              | 参数说明     | 备注     |
+  | ------------------- | ------------ | -------- |
+  | headers中的认证字段 | bearer Token | 权限认证 |
+  | projectId           | 活动id       | 不能为空 |
+
+- 响应参数
+
+  ```json
+  {
+      "ret": true,
+      "message": "删除项目成功~"
+  }
+  ```
+
+### 修改自己创建的活动面板信息(我也做了验证，只能修改自己的项目)
+
+- 请求路径：agent/update/:projectId
+
+- 请求方法：put
+
+- 请求参数：和创建项目一样  那面板data中的数据传过来+token
+
+- 响应参数
+
+  ```json
+  {
+      "ret": true,
+      "message": "更新项目信息成功~"
+  }
+  ```
+
+### 获取组件的图片，音频，视频的接口，就是返回给你的src，就可以访问，不过视频因为换了第三方库，延迟太高，后续考虑分片吧
+
+### 下面这两个接口，是以前错误的理解，先留着
+
+#### 经纪人发布房源信息(这个是我用经纪人身份模拟的)
 
 - 请求路径：/agent/release
 - 请求方法：post
@@ -534,7 +1307,7 @@ status也会有相应的返回
   }
   ```
 
-### 经纪人房源信息图片上传(也是经纪人身份模拟)
+#### 经纪人房源信息图片上传(也是经纪人身份模拟)
 
 - 请求路径：/upload/houses/:houseId/picture
 - 请求方法：post

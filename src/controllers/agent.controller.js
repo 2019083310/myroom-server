@@ -469,6 +469,19 @@ class AgentController {
       message: '更新项目信息成功~'
     }
   }
+
+  // ?经纪人获取房源详情数据
+  async getHouseInfo(ctx, next) {
+    const houseId = ctx.params.houseId
+
+    const result = await agentModel.getHouseInfo(houseId)
+
+    ctx.body = {
+      ret: true,
+      message: '获取成功~',
+      data: result[0]
+    }
+  }
 }
 
 module.exports = new AgentController()

@@ -15,7 +15,8 @@ const {
   getAllProjectList,
   removeProject,
   getPersonProjectInfo,
-  updateProjectInfo
+  updateProjectInfo,
+  getHouseInfo
 } = require('../controllers/agent.controller')
 
 // 路由中间件，工具函数
@@ -52,6 +53,9 @@ agentRouter.get('/onlineUser', verifyToken, getOnlineUser)
 
 // 经纪人获取头像
 agentRouter.get('/:agentId/avatar', getAgentAvatar)
+
+// 经纪人选择对应的房源详情
+agentRouter.get('/house/:houseId',getHouseInfo)
 
 // 经纪人发布新的房源详情
 agentRouter.post('/release', verifyToken, releaseHouseResource)
