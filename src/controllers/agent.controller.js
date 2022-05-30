@@ -309,7 +309,7 @@ class AgentController {
           // 保存卡片信息
           await agentModel.saveProjectCardInfo(item.id, item.type, item.src, item.width_img, item.height_img,
             item.width, item.height, item.left, item.top, item.name, item.soujia, item.guapai, item.fangxing, item.zhuangxiu,
-            item.mianji, item.louxing, item.chaoxiang, item.niandai, homeProjectId)
+            item.mianji, item.louxing, item.chaoxiang, item.niandai, homeProjectId, item.toid)
         } else {
           const error = new Error(errorTypes.INSERT_MESSAGE_ERROR)
           return ctx.app.emit('error', error, ctx)
@@ -451,12 +451,12 @@ class AgentController {
         if (result.length) {
           await agentModel.updateProjectCardInfo(item.id, item.type, item.src, item.width_img, item.height_img,
             item.width, item.height, item.left, item.top, item.name, item.soujia, item.guapai, item.fangxing, item.zhuangxiu,
-            item.mianji, item.louxing, item.chaoxiang, item.niandai, projectId, cardId)
+            item.mianji, item.louxing, item.chaoxiang, item.niandai, projectId, cardId, item.toid)
         } else {
           // 保存卡片信息
           await agentModel.saveProjectCardInfo(item.id, item.type, item.src, item.width_img, item.height_img,
             item.width, item.height, item.left, item.top, item.name, item.soujia, item.guapai, item.fangxing, item.zhuangxiu,
-            item.mianji, item.louxing, item.chaoxiang, item.niandai, projectId)
+            item.mianji, item.louxing, item.chaoxiang, item.niandai, projectId, item.toid)
         }
       } else {
         const error = new Error(errorTypes.INSERT_MESSAGE_ERROR)
@@ -467,6 +467,17 @@ class AgentController {
     ctx.body = {
       ret: true,
       message: '更新项目信息成功~'
+    }
+  }
+
+  // ?获取可用的房源详情id
+  async getEnableHouseInfo(ctx, next) {
+    const result = await agentModel.getEnableHouseInfo()
+
+    ctx.body = {
+      ret: true,
+      message: '获取成功~',
+      data: result
     }
   }
 

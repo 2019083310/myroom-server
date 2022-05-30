@@ -267,7 +267,7 @@ status也会有相应的返回
   }
   ```
 
-### 获取某个项目的面板数据
+### 获取某个项目的面板数据(toid,房源详情请求id)
 
 - 请求路径：/agent/active/:projectId
 
@@ -390,7 +390,8 @@ status也会有相应的返回
               "mianji": "99",
               "louxing": "",
               "chaoxiang": "南北",
-              "niandai": "2022"
+              "niandai": "2022",
+              "toid":12877//通过该id获取相应的房源详情
           },
           {
               "id": "card-2",
@@ -410,7 +411,8 @@ status也会有相应的返回
               "mianji": "99",
               "louxing": "",
               "chaoxiang": "南北",
-              "niandai": "2022"
+              "niandai": "2022",
+              "toid":128888
           }
       ]
   
@@ -422,9 +424,9 @@ status也会有相应的返回
 - 请求方法：get
 - 请求参数
 
-| 参数名  | 参数说明                | 备注 |
-| ------- | ----------------------- | ---- |
-| houseId | houseId是params中的字段 | 必填 |
+| 参数名  | 参数说明                                    | 备注 |
+| ------- | ------------------------------------------- | ---- |
+| houseId | houseId是params中的字段(对应上面返回的toid) | 必填 |
 
 - 响应参数:具体如下所示
 
@@ -852,7 +854,8 @@ status也会有相应的返回
     "mianji": "99",
     "louxing": "",
     "chaoxiang": "南北",
-    "niandai": "2022"
+    "niandai": "2022",
+     "toid":12877//bigint大整数
   },
   {
     "id": "text-2",
@@ -910,7 +913,8 @@ status也会有相应的返回
     "mianji": "99",
     "louxing": "",
     "chaoxiang": "南北",
-    "niandai": "2022"
+    "niandai": "2022",
+    "toid":12888//BigInt大整数
   }
 ]
 }
@@ -922,6 +926,58 @@ status也会有相应的返回
   {
       "ret": true,
       "message": "创建活动页成功~"
+  }
+  ```
+
+### 获取可用id
+
+- 请求路径：/agent/enable/house
+- 请求方法：get
+- 请求参数
+
+| 参数名              | 参数说明     | 备注     |
+| ------------------- | ------------ | -------- |
+| headers中的认证字段 | Bearer Token | 不能为空 |
+
+- 响应数据
+
+  ```json
+  {
+      "ret": true,
+      "message": "获取成功~",
+      "data": [
+          {
+              "id": 65140,
+              "listing_name": "aa"
+          },
+          {
+              "id": 103612,
+              "listing_name": "鑫苑小区 2室 2厅 86平米"
+          },
+          {
+              "id": 123435,
+              "listing_name": "富力城小区 2室 2厅 86.97平米"
+          },
+          {
+              "id": 124010,
+              "listing_name": "中海碧林湾 4室 2厅 137平米"
+          },
+          {
+              "id": 124936,
+              "listing_name": "中建群星汇 2室 2厅 88平米"
+          },
+          {
+              "id": 125071,
+              "listing_name": "奥达文景观园 2室 2厅 90平米"
+          },
+          {
+              "id": 127625,
+              "listing_name": "万科金域曲江 2室 2厅 77.61平米"
+          },
+          {
+              "id": 130855,
+              "listing_name": "碧水西岸南湖1号 4室 2厅 210平米"
+          }
   }
   ```
 
@@ -1125,7 +1181,8 @@ status也会有相应的返回
               "mianji": "99",
               "louxing": "",
               "chaoxiang": "南北",
-              "niandai": "2022"
+              "niandai": "2022",
+              "toid":18887
           },
           {
               "id": "card-2",
@@ -1145,7 +1202,8 @@ status也会有相应的返回
               "mianji": "99",
               "louxing": "",
               "chaoxiang": "南北",
-              "niandai": "2022"
+              "niandai": "2022",
+              "toid":12888
           }
       ]
   }

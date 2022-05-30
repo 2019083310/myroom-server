@@ -144,11 +144,11 @@ class AgentModel {
 
   // ?保存卡片信息
   async saveProjectCardInfo(id, type, src, img_width, img_height, width, height, left, top,
-    name, soujia, guapai, fangxing, zhuangxiu, mianji, louxing, chaoxiang, niandai, homeProjectId) {
-    const statement = 'INSERT INTO cardcomponent (card_id,type,src,width_img,height_img,width,height,`left`,top,name,soujia,guapai,fangxing,zhuangxiu,mianji,louxing,chaoxiang,niandai,home_project_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);'
+    name, soujia, guapai, fangxing, zhuangxiu, mianji, louxing, chaoxiang, niandai, homeProjectId,toid) {
+    const statement = 'INSERT INTO cardcomponent (card_id,type,src,width_img,height_img,width,height,`left`,top,name,soujia,guapai,fangxing,zhuangxiu,mianji,louxing,chaoxiang,niandai,home_project_id,toid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);'
 
     const result = await connection.execute(statement, [id, type, src, img_width, img_height, width, height, left, top,
-      name, soujia, guapai, fangxing, zhuangxiu, mianji, louxing, chaoxiang, niandai, homeProjectId
+      name, soujia, guapai, fangxing, zhuangxiu, mianji, louxing, chaoxiang, niandai, homeProjectId,toid
     ])
     return result[0]
   }
@@ -248,7 +248,7 @@ class AgentModel {
 
   // ?获取某一个项目的卡片信息
   async getProjectCardInfo(projectId) {
-    const statement = 'SELECT card_id id,type,src,width_img,height_img,width,height,`left`,top,`name`,soujia,guapai,fangxing,zhuangxiu,mianji,louxing,chaoxiang,niandai FROM cardcomponent WHERE home_project_id = ?;'
+    const statement = 'SELECT card_id id,type,src,width_img,height_img,width,height,`left`,top,`name`,soujia,guapai,fangxing,zhuangxiu,mianji,louxing,chaoxiang,niandai,toid FROM cardcomponent WHERE home_project_id = ?;'
     const result = await connection.execute(statement, [projectId])
 
     return result[0]
@@ -300,11 +300,11 @@ class AgentModel {
 
   // ?更新卡片信息
   async updateProjectCardInfo(id, type, src, width_img, height_img, width, height, left, top, name, soujia, guapai, fangxing, zhuangxiu,
-    mianji, louxing, chaoxiang, niandai, projectId, cardId) {
+    mianji, louxing, chaoxiang, niandai, projectId, cardId,toid) {
 
-    const statement = 'UPDATE cardcomponent SET card_id = ?,type=?,src=?,width_img=?,height_img=?,width=?,height=?,`left`=?,top=?,`name`=?,soujia=?,guapai=?,fangxing=?,zhuangxiu=?,mianji=?,louxing=?,chaoxiang=?,niandai=? WHERE home_project_id =? AND card_id =?;'
+    const statement = 'UPDATE cardcomponent SET card_id = ?,type=?,src=?,width_img=?,height_img=?,width=?,height=?,`left`=?,top=?,`name`=?,soujia=?,guapai=?,fangxing=?,zhuangxiu=?,mianji=?,louxing=?,chaoxiang=?,niandai=?,toid=? WHERE home_project_id =? AND card_id =?;'
     const result = await connection.execute(statement, [id, type, src, width_img, height_img, width, height, left, top, name, soujia, guapai, fangxing, zhuangxiu,
-      mianji, louxing, chaoxiang, niandai, projectId, cardId
+      mianji, louxing, chaoxiang, niandai,toid, projectId, cardId
     ])
     return result[0]
   }
@@ -313,6 +313,14 @@ class AgentModel {
   async getHouseInfo(houseId) {
     const statement = 'SELECT * FROM agent_house WHERE id = ?;'
     const result = await connection.execute(statement, [houseId])
+
+    return result[0]
+  }
+
+  // ?获取可用卡片id
+  async getEnableHouseInfo() {
+    const statement = 'SELECT id,`listing_name` FROM agent_house;'
+    const result = await connection.execute(statement)
 
     return result[0]
   }
