@@ -145,7 +145,7 @@ class AgentModel {
   // ?保存卡片信息
   async saveProjectCardInfo(id, type, src, img_width, img_height, width, height, left, top,
     name, soujia, guapai, fangxing, zhuangxiu, mianji, louxing, chaoxiang, niandai, homeProjectId,toid) {
-    const statement = 'INSERT INTO cardcomponent (card_id,type,src,width_img,height_img,width,height,`left`,top,name,soujia,guapai,fangxing,zhuangxiu,mianji,louxing,chaoxiang,niandai,home_project_id,toid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);'
+    const statement = 'INSERT INTO cardcomponent (card_id,type,src,width_img,height_img,width,height,`left`,top,`name`,soujia,guapai,fangxing,zhuangxiu,mianji,louxing,chaoxiang,niandai,home_project_id,toid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);'
 
     const result = await connection.execute(statement, [id, type, src, img_width, img_height, width, height, left, top,
       name, soujia, guapai, fangxing, zhuangxiu, mianji, louxing, chaoxiang, niandai, homeProjectId,toid
